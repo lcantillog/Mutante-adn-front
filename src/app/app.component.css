@@ -17,4 +17,21 @@
   .Historico { grid-area: Historico; }
   
   .estadistica { grid-area: estadistica; }
-  
+
+  table {
+    width: 100%;
+  }
+
+  .primary{
+    background: rgb(9, 190, 130);
+    color: white;
+    padding: 6px;
+    border-radius: 12px;
+  }
+
+  .warn{
+    background: rgb(236, 23, 16);
+    color: white;
+    padding: 6px;
+    border-radius: 12px;
+  }
