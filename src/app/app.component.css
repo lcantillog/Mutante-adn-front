@@ -1,0 +1,20 @@
+.container {  display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+      "form form Historico Historico"
+      "form form Historico Historico"
+      "solucion solucion estadistica estadistica"
+      "solucion solucion estadistica estadistica";
+  }
+  
+  .form { grid-area: form; }
+  
+  .solucion { grid-area: solucion; }
+  
+  .Historico { grid-area: Historico; }
+  
+  .estadistica { grid-area: estadistica; }
+  
