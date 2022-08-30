@@ -1,27 +1,73 @@
-# MutanteAdn
+# Spring Boot ADN-Mutante
+![N|Solid](https://img.blogs.es/anexom/wp-content/uploads/2019/08/magneto-920x515.jpg)
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.3.
+- ### Requerimiento - Examen ALIANZA
+Magneto quiere reclutar la mayor cantidad de mutantes para poder luchar contra los X-Men.
+Te ha contratado a ti para que desarrolles un proyecto que detecte si un humano es mutante
+basándose en su secuencia de ADN.
+Para eso te ha pedido crear un programa con un método o función con la siguiente firma (En
+alguno de los siguiente lenguajes: ( Java  ):
+### boolean isMutant(String[] dna); // Ejemplo Java
+En donde recibirás como parámetro un array de Strings que representan cada fila de una tabla
+de (NxN) con la secuencia del ADN. Las letras de los Strings solo pueden ser: **(A,T,C,G)**, las
+cuales representa cada base nitrogenada del ADN. 
+###### NO MUTANTE
 
-## Development server
+| A | T | G | C | G | A |
+|---|---|---|---|---|---|
+| C | A | G | T | G | C |
+| T | T | A | T | T | T |
+| A | G | A | C | G | G |
+| G | C | G | T | C | A |
+| T | C | A | C | T | G |
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+###### MUTANTE
 
-## Code scaffolding
+| A | T | G | C | G | A |
+|---|---|---|---|---|---|
+| C | A | G | T | G | C |
+| T | T | A | T | G | T |
+| A | G | A | A | G | G |
+| C | C | C | C | T | A |
+| T | C | A | C | T | G |
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Sabrás si un humano es mutante, si encuentras **más de una secuencia de cuatro letras
+iguales**, de forma oblicua, horizontal o vertical.
 
-## Build
+##Ejemplo (Caso mutante):
+**String[] dna = {"ATGCGA","CAGTGC","TTATGT","AGAAGG","CCCCTA","TCACTG"};**
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+En este caso el llamado a la función
+###isMutant(dna) devuelve “true”.
+Desarrolla el algoritmo de la manera más eficiente posible.
 
-## Running unit tests
+#DESAFIOS
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+###Nivel 1:
+Programa que cumpla con el método pedido por Magneto. 
+###Nivel 2:
+Crear una API REST, crear el servicio “/mutant/” en donde se pueda detectar si un humano es
+mutante enviando la secuencia de ADN mediante un HTTP POST con un Json el cual tenga el
+siguiente formato: 
 
-## Running end-to-end tests
+**POST → /mutant/**
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+**{
+“dna”:["ATGCGA","CAGTGC","TTATGT","AGAAGG","CCCCTA","TCACTG"]
+}**
 
-## Further help
+En caso de verificar un mutante, debería devolver un HTTP 200-OK, en caso contrario un 403-
+Forbidden 
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+###Nivel 3:
+Anexar una base de datos, la cual guarde los ADN’s verificados con la API.
+Solo 1 registro por ADN.
+Exponer un servicio extra **“/stats”** que devuelva un Json con las estadísticas de las
+verificaciones de
+
+**ADN: {“count_mutant_dna”:40, “count_human_dna”:100: “ratio”:0.4}**
+
+Tener en cuenta que la API puede recibir fluctuaciones agresivas de tráfico (Entre 100 y 1
+millón de peticiones por segundo).
+
+Test-Automáticos, Code coverage > 80%.
