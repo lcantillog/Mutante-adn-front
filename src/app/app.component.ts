@@ -12,8 +12,9 @@ export class AppComponent implements OnInit, AfterViewInit {
   title = 'mutante-adn';
   displayedColumns: string[] = ['id', 'isMutante', 'fecha', 'secuencia'];
   dataSource: MatTableDataSource<any>;
-
+  value="";
   @ViewChild(MatPaginator) paginator : MatPaginator ;
+  listaAdn: any=[];
 
   constructor(
     private mutanteService: MutanteService,) {
@@ -40,6 +41,20 @@ export class AppComponent implements OnInit, AfterViewInit {
       this.dataSource = new MatTableDataSource(resp);
       this.dataSource.paginator = this.paginator;
     })
+  }
+
+  postGuardar() {
+    let data = {
+      dna: this.listaAdn
+    }
+    this.mutanteService.postMutant(data).subscribe(resp => {
+      console.log(resp);
+    })
+  }
+
+  add(){
+    this.listaAdn.push(this.value)
+    this.value=""
   }
 
 } 

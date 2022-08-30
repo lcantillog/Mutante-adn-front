@@ -13,7 +13,7 @@ export class AppSettingsService {
    */
   public mutant = {
       url:{
-        valida: EndPoints.urlMutante('/mutant'),
+        valida: EndPoints.urlMutante('/mutant/'),
         all: EndPoints.urlMutante('/mutant/all'),
         estadistica: EndPoints.urlMutante('/stats/')
       }

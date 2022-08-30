@@ -1,37 +1,57 @@
-.container {  display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr 1fr;
-    gap: 0px 0px;
-    grid-auto-flow: row;
-    grid-template-areas:
-      "form form Historico Historico"
-      "form form Historico Historico"
-      "solucion solucion estadistica estadistica"
-      "solucion solucion estadistica estadistica";
-  }
-  
-  .form { grid-area: form; }
-  
-  .solucion { grid-area: solucion; }
-  
-  .Historico { grid-area: Historico; }
-  
-  .estadistica { grid-area: estadistica; }
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "form form Historico Historico"
+    "form form Historico Historico"
+    "solucion solucion estadistica estadistica"
+    "solucion solucion estadistica estadistica";
+}
 
-  table {
-    width: 100%;
-  }
+.form {
+  grid-area: form;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
 
-  .primary{
-    background: rgb(9, 190, 130);
-    color: white;
-    padding: 6px;
-    border-radius: 12px;
-  }
+.solucion {
+  grid-area: solucion;
+}
 
-  .warn{
-    background: rgb(236, 23, 16);
-    color: white;
-    padding: 6px;
-    border-radius: 12px;
-  }
+.Historico {
+  grid-area: Historico;
+}
+
+.estadistica {
+  grid-area: estadistica;
+}
+
+table {
+  width: 100%;
+}
+
+.primary {
+  background: rgb(9, 190, 130);
+  color: white;
+  padding: 6px;
+  border-radius: 12px;
+}
+
+.warn {
+  background: rgb(236, 23, 16);
+  color: white;
+  padding: 6px;
+  border-radius: 12px;
+}
+
+.mat-list {
+  width: 100%;
+  height: 9em;
+  overflow: auto;
+  border: 1px solid #11111114;
+}
